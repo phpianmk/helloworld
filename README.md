@@ -10,8 +10,8 @@ pip install requests beautifulsoup4
 
 ## Usage
 
-Provide a Zoopla search results URL and the script will print the listings found on that page:
+Provide a postcode and the script will print listings for that area:
 
 ```
-python zoopla_scraper.py "https://www.zoopla.co.uk/for-sale/property/london/"
+python zoopla_scraper.py SW11 1AA
 ```

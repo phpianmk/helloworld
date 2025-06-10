@@ -28,15 +28,25 @@ def fetch_listings(url: str):
     return listings
 
 
+def build_search_url(postcode: str) -> str:
+    """Return the Zoopla search URL for the given postcode."""
+    postcode = postcode.strip().replace(" ", "")
+    return f"https://www.zoopla.co.uk/for-sale/property/{postcode}/?q={postcode}"
+
+
 def main():
     import argparse
     parser = argparse.ArgumentParser(
-        description="Scrape property data from a Zoopla results page",
+        description="Scrape property data for a given postcode",
     )
-    parser.add_argument("url", help="Zoopla search results URL")
+    parser.add_argument(
+        "postcode",
+        help="UK postcode to search on Zoopla",
+    )
     args = parser.parse_args()
 
-    for item in fetch_listings(args.url):
+    url = build_search_url(args.postcode)
+    for item in fetch_listings(url):
         print(item)
 
 
