@@ -10,8 +10,17 @@ from bs4 import BeautifulSoup
 
 def fetch_listings(url: str):
     """Fetch property listings from a Zoopla results page."""
-    headers = {"User-Agent": "Mozilla/5.0"}
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/113.0 Safari/537.36"
+        )
+    }
     response = requests.get(url, headers=headers)
+    if response.status_code == 403:
+        print("Access forbidden. Zoopla may have blocked the request.")
+        return []
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
 

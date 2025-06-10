@@ -15,3 +15,6 @@ Provide a postcode and the script will print listings for that area:
 ```
 python zoopla_scraper.py SW11 1AA
 ```
+
+If you receive a `403 Forbidden` response, Zoopla may be blocking automated
+requests. Check their terms of use and try again later.
